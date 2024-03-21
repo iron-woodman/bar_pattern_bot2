@@ -87,6 +87,43 @@ def check_history_bars_for_pattern_2bars_v2(pair, bars: list) -> str:
     return ""
 
 
+def check_history_bars_for_pattern_2bars_v3(pair, bars: list) -> str:
+    """
+    Поиск свечного паттерна в барах истории
+    :param bars:
+    :return:
+    """
+    if len(bars) < 3:
+        print(f'{pair}: Bar count = {len(bars)}.')
+        return ""
+    _time = []
+    cl = []
+    op = []
+    vol = []
+
+    for bar in bars:
+        value = datetime.datetime.fromtimestamp(bar[0] / 1000)
+        # print(value.strftime('%Y-%m-%d %H:%M:%S'))
+        _time.append(value.strftime('%Y-%m-%d %H:%M:%S'))
+        op.append(float(bar[1]))
+        cl.append(float(bar[4]))
+        vol.append(float(bar[5]))
+
+    # проверяем значения на паттерны
+    if cl[2] > cl[1] and vol[2] > vol[1] and cl[2] > op[2] and cl[1] > op[1]:
+        # цена и объемы росли росли 2 дня подряд, размер баров (close-open) не учитываем
+        custom_logging.info(
+            f'{pair}: CLOSE: {cl[2]}- > {cl[1]}  VOL: {vol[2]} > {vol[1]}  => SHORT')
+        return "SHORT"
+    elif cl[2] < cl[1] and vol[2] > vol[1] and op[2] > cl[2] and op[1] > cl[1]:
+        # цена падала 2 дня подряд, а объемы росли росли 2 дня подряд, размер баров не учитываем
+        custom_logging.info(
+            f'{pair}: CLOSE: {cl[2]} < {cl[1]}  VOL: {vol[2]} > {vol[1]}   => LONG')
+        return "LONG"
+    return ""
+
+
+
 def check_history_bars_for_pattern_2bars_v1(pair, bars: list) -> str:
     """
     Поиск свечного паттерна в барах истории
@@ -164,6 +201,7 @@ def load_history_bars(task):
             result["signal_3bars"] = check_history_bars_for_pattern_3bars(pair, bars)
             result["signal_2bars_v2"] = check_history_bars_for_pattern_2bars_v2(pair, bars)
             result["signal_2bars_v1"] = check_history_bars_for_pattern_2bars_v1(pair, bars)
+            result["signal_2bars_v3"] = check_history_bars_for_pattern_2bars_v3(pair, bars)
             # ----------------------------------------------------------------------------------------------------------
         return result
     except Exception as e:
@@ -184,6 +222,8 @@ def store_signals_to_file(signals_data: dict, pattern_name: str):
 def load_futures_history_bars_end(responce_list):
     signals_2bars_v1 = dict()
     signals_2bars_v2 = dict()
+    signals_2bars_v3 = dict()
+
     signals_3bars = dict()
 
     for responce in responce_list:
@@ -195,13 +235,18 @@ def load_futures_history_bars_end(responce_list):
         if responce['signal_2bars_v2'] != '':
             signals_2bars_v2[id] = responce['signal_2bars_v2']
 
+        if responce['signal_2bars_v3'] != '':
+            signals_2bars_v3[id] = responce['signal_2bars_v3']
+
         if responce['signal_3bars'] != '':
             signals_3bars[id] = responce['signal_3bars']
 
     try:
         store_signals_to_file(signals_3bars, "3bars")
-        store_signals_to_file(signals_2bars_v2, "2bars_v2")
         store_signals_to_file(signals_2bars_v1, "2bars_v1")
+        store_signals_to_file(signals_2bars_v2, "2bars_v2")
+        store_signals_to_file(signals_2bars_v3, "2bars_v3")
+
     except Exception as e:
         print("load_futures_history_bars_end exception:", e)
         custom_logging.error(f'load_futures_history_bars_end exception: {e}')

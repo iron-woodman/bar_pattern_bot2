@@ -1,0 +1,13 @@
+{
+    "FTMUSDT": "SHORT",
+    "JASMYUSDT": "SHORT",
+    "GALUSDT": "SHORT",
+    "APTUSDT": "SHORT",
+    "ARBUSDT": "SHORT",
+    "SUIUSDT": "SHORT",
+    "RADUSDT": "LONG",
+    "FRONTUSDT": "LONG",
+    "TIAUSDT": "SHORT",
+    "ZETAUSDT": "SHORT",
+    "BOMEUSDT": "SHORT"
+}
