@@ -1,8 +1,0 @@
-{
-    "SKLUSDT": "SHORT",
-    "OPUSDT": "SHORT",
-    "STXUSDT": "SHORT",
-    "CKBUSDT": "SHORT",
-    "ONDOUSDT": "SHORT",
-    "VANRYUSDT": "SHORT"
-}

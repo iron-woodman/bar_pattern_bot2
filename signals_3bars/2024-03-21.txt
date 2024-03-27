@@ -1,6 +1,0 @@
-{
-    "BNBUSDT": "LONG",
-    "CRVUSDT": "LONG",
-    "FTMUSDT": "SHORT",
-    "RSRUSDT": "LONG"
-}

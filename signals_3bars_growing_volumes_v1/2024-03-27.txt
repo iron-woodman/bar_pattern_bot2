@@ -1,0 +1,15 @@
+{
+    "ICXUSDT": "SHORT",
+    "STORJUSDT": "SHORT",
+    "AXSUSDT": "SHORT",
+    "ANKRUSDT": "SHORT",
+    "LITUSDT": "SHORT",
+    "RVNUSDT": "SHORT",
+    "LINAUSDT": "SHORT",
+    "STMXUSDT": "SHORT",
+    "BNXUSDT": "SHORT",
+    "AMBUSDT": "SHORT",
+    "BIGTIMEUSDT": "SHORT",
+    "ORBSUSDT": "SHORT",
+    "MBLUSDT": "SHORT"
+}
