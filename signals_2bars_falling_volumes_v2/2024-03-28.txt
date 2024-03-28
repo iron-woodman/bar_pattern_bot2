@@ -1,0 +1,23 @@
+{
+    "BNBUSDT": "LONG",
+    "THETAUSDT": "LONG",
+    "SNXUSDT": "LONG",
+    "DOTUSDT": "LONG",
+    "AVAXUSDT": "LONG",
+    "CHRUSDT": "LONG",
+    "DGBUSDT": "LONG",
+    "GALUSDT": "LONG",
+    "1000LUNCUSDT": "LONG",
+    "LUNA2USDT": "LONG",
+    "QNTUSDT": "LONG",
+    "HOOKUSDT": "LONG",
+    "CFXUSDT": "LONG",
+    "IDEXUSDT": "LONG",
+    "1000PEPEUSDT": "LONG",
+    "SLPUSDT": "LONG",
+    "MEMEUSDT": "LONG",
+    "BADGERUSDT": "LONG",
+    "USTCUSDT": "LONG",
+    "PIXELUSDT": "LONG",
+    "METISUSDT": "LONG"
+}

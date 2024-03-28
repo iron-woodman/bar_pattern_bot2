@@ -1,0 +1,6 @@
+{
+    "FETUSDT": "SHORT",
+    "SUIUSDT": "SHORT",
+    "BONDUSDT": "SHORT",
+    "ETHFIUSDT": "SHORT"
+}

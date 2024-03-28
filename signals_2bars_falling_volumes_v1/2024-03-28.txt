@@ -1,0 +1,10 @@
+{
+    "CTKUSDT": "SHORT",
+    "ANKRUSDT": "SHORT",
+    "BTCDOMUSDT": "SHORT",
+    "DUSKUSDT": "SHORT",
+    "TRUUSDT": "SHORT",
+    "RADUSDT": "SHORT",
+    "AGLDUSDT": "SHORT",
+    "ONGUSDT": "SHORT"
+}

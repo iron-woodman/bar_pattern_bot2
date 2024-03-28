@@ -126,27 +126,23 @@ def load_history_bars(task):
                 continue
             # ------------ check for 3 different bar patterns ----------------------------------------------------------
             check_result = check_history_bars_for_pattern_3bars(pair, bars)
+            result["3bars_growing_volumes_v1"] = ""
+            result["3bars_growing_volumes_v2"] = ""
+
             if check_result == "SHORT":
                 result["3bars_growing_volumes_v1"] = "SHORT"
-            else:
-                result["3bars_growing_volumes_v1"] = ""
 
             if check_result == "LONG":
                 result["3bars_growing_volumes_v2"] = "LONG"
-            else:
-                result["3bars_growing_volumes_v2"] = ""
 
+            result["2bars_falling_volumes_v1"] = ""
+            result["2bars_falling_volumes_v2"] = ""
             check_result = check_history_bars_for_pattern_2bars_v1(pair, bars)
+
             if check_result == "SHORT":
                 result["2bars_falling_volumes_v1"] = "SHORT"
-            else:
-                result["2bars_falling_volumes_v1"] = ""
-            if check_result == "LONG":
+            elif check_result == "LONG":
                 result["2bars_falling_volumes_v2"] = "LONG"
-            else:
-                result["2bars_falling_volumes_v2"] = ""
-
-
             # ----------------------------------------------------------------------------------------------------------
         return result
     except Exception as e:
@@ -178,7 +174,7 @@ def load_futures_history_bars_end(responce_list):
             signals_2bars_v1[id] = responce['2bars_falling_volumes_v1']
 
         if responce['2bars_falling_volumes_v2'] != '':
-            signals_2bars_v1[id] = responce['2bars_falling_volumes_v2']
+            signals_2bars_v2[id] = responce['2bars_falling_volumes_v2']
 
         if responce['3bars_growing_volumes_v1'] != '':
             signals_3bars_v1[id] = responce['3bars_growing_volumes_v1']
